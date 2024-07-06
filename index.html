@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+<head><meta http-equiv="cache-control" content="no-cache"><meta http-equiv="Pragma" content="no-cache"><meta http-equiv="Expires" content="-1"><style type="text/css">/* Reset some default styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: #f0f0f0;
+}
+
+.calculator {
+  width: 300px;
+  padding: 20px;
+  border-radius: 10px;
+  background-color: #f0f0f0;
+  box-shadow: -5px -5px 15px #ffffff, 5px 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.display {
+  margin-bottom: 20px;
+}
+
+#result {
+  width: 100%;
+  padding: 10px;
+  font-size: 24px;
+  border: none;
+  border-radius: 5px;
+  background-color: #f0f0f0;
+  box-shadow: inset -5px -5px 15px #ffffff, inset 5px 5px 15px rgba(0, 0, 0, 0.1);
+  text-align: right;
+}
+
+.buttons {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-gap: 10px;
+}
+
+.btn {
+  padding: 10px;
+  font-size: 18px;
+  border: none;
+  border-radius: 5px;
+  background-color: #f0f0f0;
+  box-shadow: -5px -5px 15px #ffffff, 5px 5px 15px rgba(0, 0, 0, 0.1);
+  color: #333;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.btn:hover {
+  box-shadow: inset -5px -5px 15px #ffffff, inset 5px 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.btn:active {
+  box-shadow: inset -5px -5px 15px rgba(255, 255, 255, 0.5), inset 5px 5px 15px rgba(0, 0, 0, 0.05);
+}</style>
+
+
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SinCalculator</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="calculator">
+    <div class="display">
+      <input type="text" id="result" readonly="">
+    </div>
+    <div class="buttons">
+      <button class="btn" onclick="clearDisplay()">C</button>
+      <button class="btn" onclick="deleteChar()">DEL</button>
+      <button class="btn" onclick="insert('/')">/</button>
+      <button class="btn" onclick="insert('*')">*</button>
+      <button class="btn" onclick="insert('7')">7</button>
+      <button class="btn" onclick="insert('8')">8</button>
+      <button class="btn" onclick="insert('9')">9</button>
+      <button class="btn" onclick="insert('-')">-</button>
+      <button class="btn" onclick="insert('4')">4</button>
+      <button class="btn" onclick="insert('5')">5</button>
+      <button class="btn" onclick="insert('6')">6</button>
+      <button class="btn" onclick="insert('+')">+</button>
+      <button class="btn" onclick="insert('1')">1</button>
+      <button class="btn" onclick="insert('2')">2</button>
+      <button class="btn" onclick="insert('3')">3</button>
+      <button class="btn" onclick="calculate()">=</button>
+      <button class="btn" onclick="insert('0')">0</button>
+      <button class="btn" onclick="insert('.')">.</button>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+
+<script>let result = document.getElementById('result');
+
+function insert(value) {
+  result.value += value;
+}
+
+function clearDisplay() {
+  result.value = '';
+}
+
+function deleteChar() {
+  result.value = result.value.slice(0, -1);
+}
+
+function calculate() {
+  try {
+    result.value = eval(result.value);
+  } catch (error) {
+    result.value = 'Error';
+  }
+}</script></body>
